@@ -1,0 +1,33 @@
+body{
+    background-color: rgb(18, 53, 105);
+}
+
+h1 {
+    background-color: rgb(221, 201, 20);
+    border-radius: 20px; 
+    width: auto; 
+    margin-left: 5px; 
+    padding-left: 10px;
+    font-size: 90px;   
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+header #cabecalho{
+    padding-top: 10px;
+    background-color:rgb(221, 201, 20);
+    width: 900px;
+    border-radius: 20px;
+    justify-content: center;
+    display: flex;
+}
+
+header #rotas{
+    padding-top: 10px;
+    background-color:rgb(13, 11, 133);
+    width: 900px;
+    border-radius: 40px;
+    justify-content: center;
+    display: flex;
+}

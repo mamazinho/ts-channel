@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block base %}
+    <h1>
+        Lista de Produtos Postados 
+    </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Marketplace Id</th>
+                <th>Product Catalog Id</th>
+                <th>Seller Id</th>
+                <th>Seller Zip Code</th>
+                <th>status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.marketplace_id}}</td>
+                    <td>{{item.product_catalog_id}}</td>
+                    <td>{{item.seller_id}}</td>
+                    <td>{{item.seller_zip_code}}</td>
+                    <td>{{item.status}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

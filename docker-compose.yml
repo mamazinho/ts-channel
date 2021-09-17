@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+    ts_flask:
+        build:
+            dockerfile: Dockerfile
+            context: .
+        image: juniorolist/ts_channel_flask_mysql
+        container_name: ts_flask
+        ports:
+            - "5000:5000"
+        expose: 
+            - "5000"
+        networks:
+            - ts_network
+        depends_on:
+            ts_mysql:
+                condition: service_healthy
+        command: python main.py
+    ts_mysql:
+        image: mysql:latest
+        container_name: ts_mysql
+        ports: 
+            - "3306:3306"
+        expose: 
+            - "3306"
+        volumes: 
+            - channel_db:/var/lib/mysql
+        environment: 
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+            MYSQL_DATABASE: "channel_db"
+            MYSQL_USER: "olist"
+            MYSQL_PASSWORD: "olist"
+        networks:
+            - ts_network
+        healthcheck:
+            test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+            timeout: 2s
+            retries: 10
+networks:
+    ts_network:
+        driver: bridge
+volumes: 
+    channel_db:

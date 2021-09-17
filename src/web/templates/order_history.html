@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block base %}
+    <h1>
+        Lista de Orders
+    </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product Post Id</th>
+                <th>Status</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.product_post_id}}</td>
+                    <td>{{item.status}}</td>
+                    <td>{{item.created_at}}</td>
+                    <td>{{item.updated_at}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
